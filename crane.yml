@@ -36,7 +36,7 @@ containers:
     image: mklik/mariadb-epglv
     run:
       volumes-from: ["vdr.data"]
-      publish: ["3306:3306"]
+      publish: ["3307:3307"]
       restart: always
       detach: true
       env:
