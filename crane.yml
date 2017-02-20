@@ -5,14 +5,14 @@ containers:
     image: mklik/vdr.config
     run:
       # Map the volumes to your local filesystem to be able to edit
-      volume: ["volumes/vdr_cnf:/vdr/config", "volumes/vdr_etc:/etc/vdr", "volumes/vdr_epg:/epgd/config"]
+      volume: ["/vdr_cnf:/vdr/config", "/vdr_etc:/etc/vdr", "/vdr_epg:/epgd/config"]
       
   vdr:
     build: 
       context: vdr-headless/.
     image: mklik/vdr-headless
     run:
-      volume: ["volumes/vdr_rec:/recordings"]
+      volume: ["/vdr_rec:/recordings"]
       volumes-from: ["vdr.data"]
       link: ["database"]
       publish: ["2004:2004", "3000:3000", "4010-4020:4010-4020/udp", "6419:6419", "8002:8002", "8008:8008"]
